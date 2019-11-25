@@ -1,6 +1,5 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.config;
 
-import com.itrexgroup.vydrasergei.springmvcproject.web.controller.MainController;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -13,7 +12,7 @@ public class CatalogInitializer implements WebApplicationInitializer {
     @Override
     public void onStartup(ServletContext servletContext) throws ServletException {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(MainController.class);
+        ctx.register(CatalogConfiguration.class);
         ctx.setServletContext(servletContext);
 
         ServletRegistration.Dynamic servlet = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));
