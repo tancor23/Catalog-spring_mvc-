@@ -17,7 +17,7 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = "com.itrexgroup.vydrasergei.springmvcproject")
-@PropertySource("classpath:datasource/db_config.properties")
+@PropertySource("classpath:db_config.properties")
 public class CatalogConfiguration {
 
     @Autowired
@@ -26,6 +26,7 @@ public class CatalogConfiguration {
     private final String URL = "db.url";
     private final String USER = "db.user";
     private final String PASSWORD = "db.password";
+    private final String POOLSIZE = "db.poolsize";
 
     @Bean
     public ViewResolver viewResolver() {

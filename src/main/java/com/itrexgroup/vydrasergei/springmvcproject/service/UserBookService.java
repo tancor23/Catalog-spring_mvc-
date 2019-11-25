@@ -5,17 +5,16 @@ import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserBookDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
-import com.itrexgroup.vydrasergei.springmvcproject.service.exception.ServiceException;
 
 import java.util.List;
 
 public interface UserBookService {
 
-    List<Book> getAllMappedBookOfUser(Long userId) throws ServiceException;
+    List<Book> getAllMappedBookOfUser(Long userId);
 
-    List<User> getAllMappedUserOfBook(Long bookId) throws ServiceException;
+    List<User> getAllMappedUserOfBook(Long bookId);
 
-    boolean createByIds(Long userId, Long bookId) throws ServiceException;
+    boolean createByIds(Long userId, Long bookId);
 
     void setUserBookDAO(UserBookDAO userBookDAO);
 

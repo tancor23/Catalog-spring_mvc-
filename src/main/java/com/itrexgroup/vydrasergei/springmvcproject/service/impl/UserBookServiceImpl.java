@@ -1,17 +1,14 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
-import com.itrexgroup.vydrasergei.springmvcproject.dao.exception.DAOException;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.BookDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserBookDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserBookService;
-import com.itrexgroup.vydrasergei.springmvcproject.service.exception.ServiceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class UserBookServiceImpl implements UserBookService {
@@ -20,71 +17,34 @@ public class UserBookServiceImpl implements UserBookService {
     private BookDAO bookDAO;
     private UserBookDAO userBookDAO;
 
+
     @Override
-    public List<Book> getAllMappedBookOfUser(Long userId) throws ServiceException {
-        List<Book> books = new ArrayList<>();
-        List<Long> mappedBookIds;
-        try {
-            mappedBookIds = userDAO.getAllMappedBookIds(userId);
-        } catch (DAOException e) {
-            throw new ServiceException("UserBookServiceImpl getAllMappedBookOfUser(getAllMappedBookIds(userId))", e);
-        }
-        for (Long bookId : mappedBookIds) {
-            try {
-                books.add(bookDAO.findById(bookId));
-            } catch (DAOException e) {
-                throw new ServiceException("UserBookServiceImpl getAllMappedBookOfUser(findById(bookId))", e);
-            }
-        }
-        return books;
+    public List<Book> getAllMappedBookOfUser(Long userId) {
+        return null;
     }
 
     @Override
-    public List<User> getAllMappedUserOfBook(Long bookId) throws ServiceException {
-        List<User> users = new ArrayList<>();
-        List<Long> mappedUserIds;
-        try {
-            mappedUserIds = bookDAO.getAllMappedUserIds(bookId);
-        } catch (DAOException e) {
-            throw new ServiceException("UserBookServiceImpl getAllMappedUserOfBook(getAllMappedUserIds(bookId))", e);
-        }
-        for (Long userId : mappedUserIds) {
-            try {
-                users.add(userDAO.findById(userId));
-            } catch (DAOException e) {
-                throw new ServiceException("UserBookServiceImpl getAllMappedUserOfBook(findById(userId))", e);
-            }
-        }
-        return users;
+    public List<User> getAllMappedUserOfBook(Long bookId) {
+        return null;
     }
 
     @Override
-    public boolean createByIds(Long userId, Long bookId) throws ServiceException {
-        try {
-            if (userBookDAO.createByIds(userId, bookId)) {
-                LOGGER.info("USER BOOK record was written");
-                return true;
-            } else {
-                LOGGER.info("USER BOOK record was NOT written");
-                return false;
-            }
-        } catch (DAOException e) {
-            throw new ServiceException("UserBookServiceImpl createByIds()", e);
-        }
+    public boolean createByIds(Long userId, Long bookId) {
+        return false;
     }
 
     @Override
     public void setUserBookDAO(UserBookDAO userBookDAO) {
-        this.userBookDAO = userBookDAO;
+
     }
 
     @Override
     public void setUserDAO(UserDAO userDAO) {
-        this.userDAO = userDAO;
+
     }
 
     @Override
     public void setBookDAO(BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
+
     }
 }

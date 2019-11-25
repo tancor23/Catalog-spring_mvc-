@@ -1,16 +1,16 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.GenericDAO;
-import com.itrexgroup.vydrasergei.springmvcproject.dao.dbconfig.Datasource;
-import com.itrexgroup.vydrasergei.springmvcproject.dao.exception.DAOException;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.UserBook;
+
+import java.util.List;
 
 public abstract class UserBookDAO extends GenericDAO<UserBook, Long> {
 
-    public UserBookDAO(Datasource datasource) {
-        super(datasource);
-    }
+    public abstract boolean createByIds(Long userId, Long bookId);
 
-    public abstract boolean createByIds(Long userId, Long bookId) throws DAOException;
+    public abstract List<Long> getAllMappedBookIds(Long userId);
+
+    public abstract List<Long> getAllMappedUserIds(Long bookId);
 
 }

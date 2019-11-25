@@ -1,83 +1,43 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
-import com.itrexgroup.vydrasergei.springmvcproject.dao.exception.DAOException;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
-import com.itrexgroup.vydrasergei.springmvcproject.service.exception.ServiceException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    private final static Logger LOGGER = LogManager.getLogger(UserServiceImpl.class);
+    @Autowired
     private UserDAO userDAO;
 
     @Override
-    public void create(final User user) throws ServiceException {
-        if (user != null) {
-            try {
-                if (userDAO.createUser(user.getFirstName(), user.getLastName())) {
-                    LOGGER.info("UserServiceImpl create(), User was created");
-                } else {
-                    LOGGER.info("UserServiceImpl create(), User was NOT created");
-                }
-            } catch (DAOException e) {
-                throw new ServiceException("UserServiceImpl create()", e);
-            }
-        } else {
-            throw new ServiceException("UserServiceImpl create(), User object is null");
-        }
+    public void create(User user) {
+
     }
 
     @Override
-    public User findUser(Long userId) throws ServiceException {
-        User user;
-        try {
-            user = userDAO.findById(userId);
-        } catch (DAOException e) {
-            throw new ServiceException("UserServiceImpl findUser()", e);
-        }
-        return user;
+    public User findUser(Long userId) {
+        return userDAO.findById(userId);
     }
 
     @Override
-    public boolean editUser(final User user) throws ServiceException {
-        try {
-            return userDAO.update(user);
-        } catch (DAOException e) {
-            throw new ServiceException("UserServiceImpl editUser()", e);
-        }
+    public boolean editUser(User user) {
+        return false;
     }
 
     @Override
-    public List<User> getAllUsers() throws ServiceException {
-        List<User> users;
-        try {
-            users = userDAO.findAll();
-        } catch (DAOException e) {
-            throw new ServiceException("UserServiceImpl getAllUsers()", e);
-        }
-        return users;
+    public List<User> getAllUsers() {
+        return null;
     }
 
     @Override
-    public void setUserDAO(final UserDAO userDAO) {
-        this.userDAO = userDAO;
+    public void setUserDAO(UserDAO userDAO) {
+
     }
 
     @Override
-    public boolean remove(Long userId) throws ServiceException {
-        try {
-            return userDAO.delete(userId);
-        } catch (DAOException e) {
-            throw new ServiceException("UserServiceImpl remove()");
-        }
+    public boolean remove(Long userId) {
+        return false;
     }
-
-    public boolean remove(final User user) throws ServiceException {
-        return remove(user.getId());
-    }
-
 }

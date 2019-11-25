@@ -1,24 +1,16 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dao;
 
-import com.itrexgroup.vydrasergei.springmvcproject.dao.dbconfig.Datasource;
-import com.itrexgroup.vydrasergei.springmvcproject.dao.exception.DAOException;
-
 import java.util.List;
 
 public abstract class GenericDAO<O, K> {
-    protected Datasource datasource;
 
-    public GenericDAO(Datasource datasource) {
-        this.datasource = datasource;
-    }
+    public abstract boolean create(O entity);
 
-    public abstract O create(O entity) throws DAOException;
+    public abstract O findById(K id);
 
-    public abstract O findById(K id) throws DAOException;
+    public abstract List<O> findAll();
 
-    public abstract List<O> findAll() throws DAOException;
+    public abstract boolean update(O entity);
 
-    public abstract boolean update(O entity) throws DAOException;
-
-    public abstract boolean delete(K id) throws DAOException;
+    public abstract boolean delete(K id);
 }

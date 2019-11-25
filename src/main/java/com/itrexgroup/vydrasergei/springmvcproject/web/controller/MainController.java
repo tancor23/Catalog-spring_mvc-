@@ -1,5 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
+import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,9 +11,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/start")
 public class MainController {
 
+    @Autowired
+    UserDAO userDAO;
+
     @RequestMapping(method = RequestMethod.GET)
     public String sayHello(ModelMap model) {
-        model.addAttribute("greeting", "Hello World from Spring 4 MVC");
+        model.addAttribute("greeting", userDAO.findById(1L).toString());
         return "welcome";
     }
 

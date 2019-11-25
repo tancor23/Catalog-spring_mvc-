@@ -1,82 +1,42 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
-import com.itrexgroup.vydrasergei.springmvcproject.dao.exception.DAOException;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.BookDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
-import com.itrexgroup.vydrasergei.springmvcproject.service.exception.ServiceException;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class BookServiceImpl implements BookService {
-    private final static Logger LOGGER = LogManager.getLogger(BookServiceImpl.class);
-    private BookDAO bookDAO;
 
     @Override
-    public void create(final Book book) throws ServiceException {
-        if (book != null) {
-            try {
-                if (bookDAO.createBook(book.getName(), book.getAuthor(), book.getPage())) {
-                    LOGGER.info("BookServiceImpl, book was created");
-                } else {
-                    LOGGER.info("BookServiceImpl, book was not created");
-                }
-            } catch (DAOException e) {
-                throw new ServiceException("BookServiceImpl create()", e);
-            }
-        } else {
-            throw new ServiceException("BookServiceImpl create(), Book object is null");
-        }
+    public void create(Book book) {
+
     }
 
     @Override
-    public Book findBook(Long bookId) throws ServiceException {
-        Book book;
-        try {
-            book = bookDAO.findById(bookId);
-        } catch (DAOException e) {
-            throw new ServiceException("BookServiceImpl findBook(), Book was not found", e);
-        }
-        return book;
+    public Book findBook(Long bookId) {
+        return null;
     }
 
     @Override
-    public boolean editBook(final Book book) throws ServiceException {
-        try {
-            return bookDAO.update(book);
-        } catch (DAOException e) {
-            throw new ServiceException("BookServiceImpl editBook(), Book was not updated", e);
-        }
+    public boolean editBook(Book book) {
+        return false;
     }
 
     @Override
-    public List<Book> getAllBooks() throws ServiceException {
-        List<Book> books;
-        try {
-            books = bookDAO.findAll();
-        } catch (DAOException e) {
-            throw new ServiceException("BookServiceImpl getAllBooks(), Books were not selected from DB", e);
-        }
-        return books;
-    }
-
-    public void setBookDAO(final BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
+    public List<Book> getAllBooks() {
+        return null;
     }
 
     @Override
-    public boolean remove(Long bookId) throws ServiceException {
-        try {
-            return bookDAO.delete(bookId);
-        } catch (DAOException e) {
-            throw new ServiceException("BookServiceImpl remove(), Books were not removed from DB", e);
-        }
+    public void setBookDAO(BookDAO bookDAO) {
+
     }
 
-    public boolean remove(final Book book) throws ServiceException {
-        return remove(book.getId());
+    @Override
+    public boolean remove(Long bookId) {
+        return false;
     }
-
 }
