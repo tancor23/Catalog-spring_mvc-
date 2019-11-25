@@ -6,45 +6,48 @@ import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserBookService;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserBookServiceImpl implements UserBookService {
-    private final static Logger LOGGER = LogManager.getLogger(UserBookServiceImpl.class);
+
+    @Autowired
     private UserDAO userDAO;
+
+    @Autowired
     private BookDAO bookDAO;
+
+    @Autowired
     private UserBookDAO userBookDAO;
 
 
     @Override
     public List<Book> getAllMappedBookOfUser(Long userId) {
-        return null;
+        List<Long> allMappedBookIds = userBookDAO.getAllMappedBookIds(userId);
+        List<Book> books = new ArrayList<>();
+        for (Long bookId : allMappedBookIds) {
+            books.add(bookDAO.findById(bookId));
+        }
+        return books;
     }
 
     @Override
     public List<User> getAllMappedUserOfBook(Long bookId) {
-        return null;
+        List<Long> allMappedUserIds = userBookDAO.getAllMappedUserIds(bookId);
+        List<User> users = new ArrayList<>();
+        for (Long userId : allMappedUserIds) {
+            users.add(userDAO.findById(userId));
+        }
+        return users;
     }
 
     @Override
     public boolean createByIds(Long userId, Long bookId) {
-        return false;
+        return userBookDAO.createByIds(userId, bookId);
     }
 
-    @Override
-    public void setUserBookDAO(UserBookDAO userBookDAO) {
-
-    }
-
-    @Override
-    public void setUserDAO(UserDAO userDAO) {
-
-    }
-
-    @Override
-    public void setBookDAO(BookDAO bookDAO) {
-
-    }
 }
