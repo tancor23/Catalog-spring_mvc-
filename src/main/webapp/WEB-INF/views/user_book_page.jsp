@@ -4,8 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/shortcut_icon.png">
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/shortcut_icon.png">
+    <link rel="icon" type="image/x-icon" href="/resources/images/shortcut_icon.png">
+    <link rel="shortcut icon" href="/resources/images/shortcut_icon.png">
     <title>User-Book</title>
     <meta charset="utf-8">
 </head>
@@ -13,14 +13,14 @@
 
 <div id="container">
     <div class="userBookForm">
-        <h1>User '${requestScope.firstName} ${requestScope.lastName}' has: </h1>
+        <h1>User '${firstName} ${lastName}' has: </h1>
         <c:choose>
-            <c:when test="${requestScope.userBookNameSize=='0'}">
+            <c:when test="${userBookNameSize=='0'}">
                 <h1>No one book</h1>
                 <br />
             </c:when>
             <c:otherwise>
-                <c:forEach items="${requestScope.userBookNames}" var="userBookName">
+                <c:forEach items="${userBookNames}" var="userBookName">
                     <h1> - '${userBookName}' book</h1>
                 </c:forEach>
                 <br />
@@ -29,7 +29,7 @@
     </div>
 </div>
 <div>
-    <form method="get" action="${pageContext.request.contextPath}/start">
+    <form method="get" action="${pageContext.request.contextPath}/main/">
         <input type="submit" name="back" value="Back"/>
     </form>
 </div>

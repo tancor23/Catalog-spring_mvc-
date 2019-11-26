@@ -22,12 +22,18 @@ public class UserBookDAOImpl extends UserBookDAO {
 
     private static final String ADD_USER_BOOK_BY_IDS_SQL = "INSERT INTO user_book(user_id, book_id) VALUES(?,?);";
     private static final String GET_ALL_USER_BOOKS_SQL = "SELECT * FROM user_book;";
+    private static final String CHECK_IF_RECORD_EXISTS_SQL = "SELECT EXISTS(SELECT * FROM user_book WHERE user_id=? and book_id = ?);";
     private static final String SELECT_ALL_MAPPED_BOOK_ID_SQL = "SELECT book_id FROM user_book WHERE user_id=?;";
     private static final String SELECT_ALL_MAPPED_USER_ID_SQL = "SELECT user_id FROM user_book WHERE book_id=?;";
 
     @Override
     public boolean createByIds(Long userId, Long bookId) {
-        return jdbcTemplate.update(ADD_USER_BOOK_BY_IDS_SQL, userId, bookId) > 0;
+        if (jdbcTemplate.queryForObject(CHECK_IF_RECORD_EXISTS_SQL, new Object[] { userId, bookId} , Boolean.class)) {
+            return false;
+        } else {
+            jdbcTemplate.update(ADD_USER_BOOK_BY_IDS_SQL, userId, bookId);
+            return true;
+        }
     }
 
     @Override

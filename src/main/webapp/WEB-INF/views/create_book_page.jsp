@@ -2,8 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="${pageContext.request.contextPath}/resources/images/shortcut_icon.png">
-    <link rel="shortcut icon" href="${pageContext.request.contextPath}/resources/images/shortcut_icon.png">
+    <link rel="icon" type="image/x-icon" href="/resources/images/shortcut_icon.png">
+    <link rel="shortcut icon" href="/resources/images/shortcut_icon.png">
     <title>Create Book</title>
     <meta charset="utf-8">
 </head>
@@ -21,7 +21,7 @@
 </div>
 <br>
 <div>
-    <form method="get" action="${pageContext.request.contextPath}/start">
+    <form method="get" action="${pageContext.request.contextPath}/main/">
         <input type="submit" name="back" value="Back"/>
     </form>
 </div>
