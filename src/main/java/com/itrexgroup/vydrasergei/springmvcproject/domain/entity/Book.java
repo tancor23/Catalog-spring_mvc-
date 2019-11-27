@@ -1,11 +1,24 @@
 package com.itrexgroup.vydrasergei.springmvcproject.domain.entity;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
+@Table(name = "book" , schema = "catalog_mysql")
 public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable=false, unique=true)
     private long id = -1;
+
+    @Column(name = "name", nullable=false)
     private String name;
+
+    @Column(name = "author", nullable=false)
     private String author;
+
+    @Column(name = "page")
     private int page;
 
     public Book(){}
