@@ -24,7 +24,8 @@ public class BookController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteBookPostMethod(@RequestParam String bookId) {
-
+        long id = Long.parseLong(bookId);
+        bookService.delete(bookService.getBookByID(id));
         return "redirect:/main/";
     }
 
@@ -41,13 +42,31 @@ public class BookController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookId, @RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
-
+        long id = Long.parseLong(bookId);
+        Book book = bookService.getBookByID(id);
+        book.setName(bookName);
+        book.setAuthor(authorName);
+        int page;
+        try {
+            page = Integer.parseInt(countOfPage);
+        } catch (NumberFormatException e) {
+            page = 1;
+        }
+        book.setPage(page);
+        bookService.update(book);
         return "redirect:/main/";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
-
+        int page;
+        try {
+            page = Integer.parseInt(countOfPage);
+        }catch (NumberFormatException e){
+            page = 1;
+        }
+        Book book = new Book(bookName, authorName, page);
+        bookService.create(book);
         return "redirect:/main/";
     }
 }
