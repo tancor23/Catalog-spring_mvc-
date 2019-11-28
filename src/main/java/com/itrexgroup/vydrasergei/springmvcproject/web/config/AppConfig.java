@@ -9,18 +9,14 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
-import org.springframework.web.servlet.view.JstlView;
-
-import static org.hibernate.cfg.Environment.*;
 
 import java.util.Objects;
 import java.util.Properties;
+
+import static org.hibernate.cfg.Environment.*;
 
 @Configuration
 @EnableTransactionManagement
@@ -69,7 +65,7 @@ public class AppConfig {
         props.put(C3P0_MAX_STATEMENTS, Objects.requireNonNull(env.getProperty(HIBERNATE_MAX_STATEMENTS)));
 
         factoryBean.setHibernateProperties(props);
-        factoryBean.setAnnotatedClasses(User.class, Book.class, UserBook.class);
+        factoryBean.setAnnotatedClasses(User.class, Book.class);
         return factoryBean;
     }
 

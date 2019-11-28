@@ -31,14 +31,7 @@ public class UserBookController {
 
     @RequestMapping(value = "/user_info", method = RequestMethod.POST)
     public String goToUserInfoPagePostMethod(ModelMap model, @RequestParam String userId) {
-        long id = Long.parseLong(userId);
-        User user = userService.findUser(id);
-        List<Book> allMappedBookOfUser = userBookService.getAllMappedBookOfUser(id);
-        List<String> nameOfBooks = getNameOfBooks(allMappedBookOfUser);
-        model.addAttribute("firstName", user.getFirstName());
-        model.addAttribute("lastName", user.getLastName());
-        model.addAttribute("userBookNames", nameOfBooks);
-        model.addAttribute("userBookNameSize", nameOfBooks.size());
+
         return "user_book_page";
     }
 
@@ -48,13 +41,7 @@ public class UserBookController {
 
     @RequestMapping(value = "/book_info", method = RequestMethod.POST)
     public String goToBookInfoPagePostMethod(ModelMap model, @RequestParam String bookId) {
-        long id = Long.parseLong(bookId);
-        Book book = bookService.findBook(id);
-        List<User> allMappedUserOfBook = userBookService.getAllMappedUserOfBook(id);
-        List<String> userNames = getFullNameOfUser(allMappedUserOfBook);
-        model.addAttribute("bookName", book.getName());
-        model.addAttribute("bookUserSize", userNames.size());
-        model.addAttribute("bookUsers", userNames);
+
         return "book_user_page";
     }
 
@@ -64,9 +51,7 @@ public class UserBookController {
 
     @RequestMapping(value = "/add_mapping", method = RequestMethod.GET)
     public ModelAndView goToAddMappingGetMethod(ModelAndView model) {
-        model.setViewName("add_user_book_mapping");
-        model.addObject("users", userService.getAllUsers());
-        model.addObject("books", bookService.getAllBooks());
+
         return model;
     }
 

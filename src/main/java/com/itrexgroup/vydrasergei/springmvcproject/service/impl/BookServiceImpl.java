@@ -5,6 +5,7 @@ import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -14,28 +15,34 @@ public class BookServiceImpl implements BookService {
     @Autowired
     private BookDAO bookDAO;
 
+    @Transactional
     @Override
     public void create(Book book) {
         bookDAO.create(book);
     }
 
-    @Override
-    public Book findBook(Long bookId) {
-        return bookDAO.findById(bookId);
-    }
-
-    @Override
-    public boolean editBook(Book book) {
-        return bookDAO.update(book);
-    }
-
+    @Transactional
     @Override
     public List<Book> getAllBooks() {
-        return bookDAO.findAll();
+        return bookDAO.getAllBooks();
     }
 
+    @Transactional
     @Override
-    public boolean remove(Long bookId) {
-        return bookDAO.delete(bookId);
+    public Book getBookByID(Long id) {
+        return bookDAO.getBookByID(id);
     }
+
+    @Transactional
+    @Override
+    public void delete(Book book) {
+        bookDAO.delete(book);
+    }
+
+    @Transactional
+    @Override
+    public void update(Book book) {
+        bookDAO.update(book);
+    }
+
 }

@@ -2,65 +2,51 @@ package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.impl;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.rowmapper.UserMapper;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-import javax.sql.DataSource;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
-@Component
-public class UserDAOImpl extends UserDAO {
-
-    private JdbcTemplate jdbcTemplate;
+@Repository
+public class UserDAOImpl implements UserDAO {
 
     @Autowired
-    public UserDAOImpl(DataSource dataSource) {
-        jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
-    private static final String CHECK_USER_BY_ID_SQL = "SELECT id,first_name,last_name,created_at FROM users WHERE first_name=? and last_name=?;";
-    private static final String ADD_NEW_USER_SQL = "INSERT INTO users (`first_name`, `last_name`) VALUES (?, ?);";
-    private static final String UPDATE_USER_SQL = "UPDATE users SET first_name=?, last_name=? WHERE id=?;";
-    private static final String GET_USER_BY_ID_SQL = "SELECT * FROM users WHERE id=?;";
-    private static final String GET_ALL_USERS_SQL = "SELECT * FROM users;";
-    private static final String DELETE_USER_BY_ID_SQL = "DELETE FROM users WHERE id=?;";
-
-    @Override
-    public User getUserFromDB(String firstName, String lastName) {
-        // return (User) jdbcTemplate.queryForObject(CHECK_USER_BY_ID_SQL, new Object[]{firstName, lastName}, new BeanPropertyRowMapper(User.class));
-        return jdbcTemplate.queryForObject(CHECK_USER_BY_ID_SQL, new Object[]{firstName, lastName}, new UserMapper());
-    }
-
-    @Override
-    public boolean createUser(String firstName, String lastName) {
-        return jdbcTemplate.update(ADD_NEW_USER_SQL, firstName, lastName) > 0;
-    }
+    private SessionFactory sessionFactory;
 
     @Override
     public boolean create(User user) {
-        return createUser(user.getFirstName(), user.getLastName());
+        sessionFactory.getCurrentSession().save(user);
+        return true;
     }
 
     @Override
-    public User findById(Long id) {
-        return jdbcTemplate.queryForObject(GET_USER_BY_ID_SQL, new Object[]{id}, new UserMapper());
+    public List<User> getAllUsers() {
+        CriteriaBuilder builder = sessionFactory.getCurrentSession().getCriteriaBuilder();
+        CriteriaQuery<User> query = builder.createQuery(User.class);
+        Root<User> root = query.from(User.class);
+        query.select(root);
+        Query<User> q = sessionFactory.getCurrentSession().createQuery(query);
+        return q.getResultList();
     }
 
     @Override
-    public List<User> findAll() {
-        return jdbcTemplate.query(GET_ALL_USERS_SQL, new UserMapper());
+    public User getUserByID(Long id) {
+        return sessionFactory.getCurrentSession().get(User.class, id);
     }
 
     @Override
-    public boolean update(User user) {
-        return jdbcTemplate.update(UPDATE_USER_SQL, user.getFirstName(), user.getLastName(), user.getId()) > 0;
+    public void delete(User user) {
+        sessionFactory.getCurrentSession().delete(user);
     }
 
     @Override
-    public boolean delete(Long id) {
-        return jdbcTemplate.update(DELETE_USER_BY_ID_SQL, id) > 0;
+    public void update(User user) {
+        sessionFactory.getCurrentSession().update(user);
     }
 
 }

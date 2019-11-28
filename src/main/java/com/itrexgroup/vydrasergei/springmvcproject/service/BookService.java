@@ -8,12 +8,11 @@ public interface BookService {
 
     void create(Book book);
 
-    Book findBook(Long bookId);
-
-    boolean editBook(Book book);
-
     List<Book> getAllBooks();
 
-    boolean remove(Long bookId);
+    Book getBookByID(Long id);
 
+    void delete(Book book);
+
+    void update(Book book);
 }

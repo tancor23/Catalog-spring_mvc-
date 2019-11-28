@@ -24,27 +24,6 @@ public class UserBookServiceImpl implements UserBookService {
     @Autowired
     private UserBookDAO userBookDAO;
 
-
-    @Override
-    public List<Book> getAllMappedBookOfUser(Long userId) {
-        List<Long> allMappedBookIds = userBookDAO.getAllMappedBookIds(userId);
-        List<Book> books = new ArrayList<>();
-        for (Long bookId : allMappedBookIds) {
-            books.add(bookDAO.findById(bookId));
-        }
-        return books;
-    }
-
-    @Override
-    public List<User> getAllMappedUserOfBook(Long bookId) {
-        List<Long> allMappedUserIds = userBookDAO.getAllMappedUserIds(bookId);
-        List<User> users = new ArrayList<>();
-        for (Long userId : allMappedUserIds) {
-            users.add(userDAO.findById(userId));
-        }
-        return users;
-    }
-
     @Override
     public boolean createByIds(Long userId, Long bookId) {
         return userBookDAO.createByIds(userId, bookId);

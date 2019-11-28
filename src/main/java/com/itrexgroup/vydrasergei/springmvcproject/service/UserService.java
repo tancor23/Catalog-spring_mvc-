@@ -8,12 +8,12 @@ public interface UserService {
 
     void create(User user);
 
-    User findUser(Long userId);
-
-    boolean editUser(User user);
-
     List<User> getAllUsers();
 
-    boolean remove(Long userId);
+    User getUserByID(Long id);
+
+    void delete(User user);
+
+    void update(User user);
 
 }
