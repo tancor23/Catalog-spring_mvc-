@@ -23,7 +23,8 @@ public class UserController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteUserPostMethod(@RequestParam String userId) {
-
+        long id = Long.parseLong(userId);
+        userService.delete(userService.getUserByID(id));
         return "redirect:/main/";
     }
 
@@ -39,7 +40,11 @@ public class UserController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUserPostMethod(@RequestParam String userId, @RequestParam String firstName, @RequestParam String lastName) {
-
+        long id = Long.parseLong(userId);
+        User user = userService.getUserByID(id);
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        userService.update(user);
         return "redirect:/main/";
     }
 
