@@ -39,11 +39,11 @@ public class User {
     @Column(name = "created_at")
     private Date createdAt;
 
-/*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)//, fetch = FetchType.LAZY)
     @JoinTable(name = "user_book",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "book_id") })
-    private List<Book> books = new ArrayList<>();*/
+    private List<Book> books = new ArrayList<>();
 
     public String getFullName(){
         return firstName + " " + lastName;

@@ -33,8 +33,9 @@ public class Book {
 /*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_book",
             joinColumns = { @JoinColumn(name = "book_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") })
-    private List<User> users = new ArrayList<>();*/
+            inverseJoinColumns = { @JoinColumn(name = "user_id") })*/
+    @ManyToMany(mappedBy="books", fetch = FetchType.EAGER)
+    private List<User> users = new ArrayList<>();
 
     public Book(String name, String author) {
         this.name = name;
