@@ -1,9 +1,8 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
-import com.itrexgroup.vydrasergei.springmvcproject.service.UserBookService;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,9 +24,6 @@ public class UserBookController {
 
     @Autowired
     BookService bookService;
-
-    @Autowired
-    UserBookService userBookService;
 
     @RequestMapping(value = "/user_info", method = RequestMethod.POST)
     public String goToUserInfoPagePostMethod(ModelMap model, @RequestParam String userId) {
@@ -60,11 +56,6 @@ public class UserBookController {
         ModelAndView model = new ModelAndView();
         long userId = Long.parseLong(userSelect);
         long bookId = Long.parseLong(bookSelect);
-        if (userBookService.createByIds(userId, bookId)) {
-            model.addObject("dbAlert", "Successful");
-        } else {
-            model.addObject("dbAlert", "This mapping is already in DB");
-        }
         return goToAddMappingGetMethod(model);
     }
 

@@ -1,8 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.config;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.UserBook;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

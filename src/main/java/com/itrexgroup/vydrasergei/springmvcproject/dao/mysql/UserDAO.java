@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
 
 import java.util.List;
 
@@ -10,9 +10,13 @@ public interface UserDAO {
 
     List<User> getAllUsers();
 
-    User getUserByID(Long id);
-
-    void delete(User user);
-
     void update(User user);
+
+    User getById(Long key);
+
+    void persist(User entity);
+
+    void delete(User entity);
+
+    //List<Book> mappedBooks();
 }

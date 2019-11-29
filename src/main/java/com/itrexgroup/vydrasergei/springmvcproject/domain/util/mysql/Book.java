@@ -1,8 +1,10 @@
-package com.itrexgroup.vydrasergei.springmvcproject.domain.entity;
+package com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql;
 
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -27,6 +29,12 @@ public class Book {
 
     @Column(name = "page")
     private int page;
+
+/*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinTable(name = "user_book",
+            joinColumns = { @JoinColumn(name = "book_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id") })
+    private List<User> users = new ArrayList<>();*/
 
     public Book(String name, String author) {
         this.name = name;

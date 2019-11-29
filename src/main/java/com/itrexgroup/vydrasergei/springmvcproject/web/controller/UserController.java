@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

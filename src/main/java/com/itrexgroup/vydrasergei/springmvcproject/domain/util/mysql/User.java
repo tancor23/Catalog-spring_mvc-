@@ -1,12 +1,10 @@
-package com.itrexgroup.vydrasergei.springmvcproject.domain.entity;
+package com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -41,17 +39,11 @@ public class User {
     @Column(name = "created_at")
     private Date createdAt;
 
-/*    private Set<Book> mappedBooks = new HashSet<>();
-
-    @ManyToMany
+/*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "user_book",
-            //foreign key for CarsEntity in employee_car table
-            joinColumns = @JoinColumn(name = "user_id"),
-            //foreign key for other side - EmployeeEntity in employee_car table
-            inverseJoinColumns = @JoinColumn(name = "book_id"))
-    private Set<Book> getMappedBooks() {
-        return mappedBooks;
-    }*/
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "book_id") })
+    private List<Book> books = new ArrayList<>();*/
 
     public String getFullName(){
         return firstName + " " + lastName;

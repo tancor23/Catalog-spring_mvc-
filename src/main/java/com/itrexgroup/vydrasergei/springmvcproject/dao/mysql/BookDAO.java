@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.Book;
 
 import java.util.List;
 
@@ -10,9 +10,11 @@ public interface BookDAO {
 
     List<Book> getAllBooks();
 
-    Book getBookByID(Long id);
-
-    void delete(Book book);
-
     void update(Book book);
+
+    Book getById(Long key);
+
+    void persist(Book entity);
+
+    void delete(Book entity);
 }

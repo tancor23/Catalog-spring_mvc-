@@ -1,7 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.BookDAO;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.Book;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
     @Transactional
     @Override
     public Book getBookByID(Long id) {
-        return bookDAO.getBookByID(id);
+        return bookDAO.getById(id);
     }
 
     @Transactional

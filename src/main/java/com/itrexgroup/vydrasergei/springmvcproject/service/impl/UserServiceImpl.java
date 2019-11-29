@@ -1,7 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.entity.User;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     @Override
     public User getUserByID(Long id) {
-        return userDAO.getUserByID(id);
+        return userDAO.getById(id);
     }
 
     @Transactional
