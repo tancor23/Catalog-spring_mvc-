@@ -1,4 +1,4 @@
-package com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql;
+package com.itrexgroup.vydrasergei.springmvcproject.domain.mysql;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -39,11 +39,11 @@ public class User {
     @Column(name = "created_at")
     private Date createdAt;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)//, fetch = FetchType.LAZY)
+/*    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_book",
             joinColumns = { @JoinColumn(name = "user_id") },
             inverseJoinColumns = { @JoinColumn(name = "book_id") })
-    private List<Book> books = new ArrayList<>();
+    private List<Book> books;*/
 
     public String getFullName(){
         return firstName + " " + lastName;

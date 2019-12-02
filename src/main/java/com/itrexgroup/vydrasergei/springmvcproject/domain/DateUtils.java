@@ -1,4 +1,4 @@
-package com.itrexgroup.vydrasergei.springmvcproject.domain.util;
+package com.itrexgroup.vydrasergei.springmvcproject.domain;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

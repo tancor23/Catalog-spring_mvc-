@@ -2,7 +2,7 @@ package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.impl;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.AbstractDAO;
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.BookDAO;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.Book;
 import org.hibernate.query.Query;
 import org.springframework.stereotype.Repository;
 

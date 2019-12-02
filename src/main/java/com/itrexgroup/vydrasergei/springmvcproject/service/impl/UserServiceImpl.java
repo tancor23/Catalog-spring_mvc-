@@ -1,7 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.UserDAO;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.User;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

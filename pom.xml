@@ -23,7 +23,10 @@
         <servlet.version>3.1.0</servlet.version>
         <spring.version>5.2.0.RELEASE</spring.version>
         <hibernate.version>5.4.9.Final</hibernate.version>
+        <hibernate-validator.version>6.0.17.Final</hibernate-validator.version>
         <mchange.version>0.9.5.2</mchange.version>
+        <modelmapper.version>2.3.5</modelmapper.version>
+        <validation.version>2.0.1.Final</validation.version>
     </properties>
 
     <build>
@@ -100,6 +103,11 @@
             <artifactId>hibernate-c3p0</artifactId>
             <version>${hibernate.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
         <!---->
         <dependency>
             <groupId>com.mchange</groupId>
@@ -147,6 +155,18 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
+        </dependency>
+        <!--ModelMapper-->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>${modelmapper.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+            <version>${validation.version}</version>
         </dependency>
 
     </dependencies>

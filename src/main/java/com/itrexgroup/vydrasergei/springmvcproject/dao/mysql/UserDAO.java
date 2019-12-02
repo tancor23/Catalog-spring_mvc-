@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.User;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.User;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dao.mysql;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.util.mysql.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.Book;
 
 import java.util.List;
 
