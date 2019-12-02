@@ -1,5 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
+import com.itrexgroup.vydrasergei.springmvcproject.dto.UserDto;
 import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.entity.UserEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
@@ -41,8 +42,8 @@ public class UserBookController {
         return "book_user_page";
     }
 
-    private List<String> getFullNameOfUser(List<UserEntity> userEntities) {
-        return userEntities.stream().map(UserEntity::getFullName).collect(Collectors.toList());
+    private List<String> getFullNameOfUser(List<UserDto> userDtos) {
+        return userDtos.stream().map(UserDto::getFullName).collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/add_mapping", method = RequestMethod.GET)

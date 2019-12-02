@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class BookServiceImpl implements BookService<BookDto> {
+public class BookServiceImpl implements BookService {
 
     @Autowired
     private BookDao bookDAO;

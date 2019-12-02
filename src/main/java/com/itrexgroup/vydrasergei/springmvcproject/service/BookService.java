@@ -1,16 +1,18 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service;
 
+import com.itrexgroup.vydrasergei.springmvcproject.dto.BookDto;
+
 import java.util.List;
 
-public interface BookService<T> {
+public interface BookService {
 
-    T create(T bookEntity);
+    BookDto create(BookDto bookEntity);
 
-    List<T> getAllBooks();
+    List<BookDto> getAllBooks();
 
-    T getBookByID(Long id);
+    BookDto getBookByID(Long id);
 
-    void delete(T bookEntity);
+    void delete(BookDto bookEntity);
 
-    void update(T bookEntity);
+    void update(BookDto bookEntity);
 }

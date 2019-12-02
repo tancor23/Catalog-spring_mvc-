@@ -41,7 +41,7 @@ public class UserController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUserPostMethod(@RequestParam String userId, @RequestParam String firstName, @RequestParam String lastName) {
         long id = Long.parseLong(userId);
-        UserDto userDto = (UserDto) userService.getUserByID(id);
+        UserDto userDto = userService.getUserByID(id);
         userDto.setFirstName(firstName);
         userDto.setLastName(lastName);
         userService.update(userDto);

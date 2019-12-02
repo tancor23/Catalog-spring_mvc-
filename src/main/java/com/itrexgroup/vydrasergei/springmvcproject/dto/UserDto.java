@@ -1,6 +1,5 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dto;
 
-import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -27,7 +26,7 @@ public class UserDto {
     @NotNull
     private Date createdAt;
 
-    private List<BookEntity> bookEntities;
+    private List<Long> bookDtos;
 
     public UserDto(@NotNull String firstName, @NotNull String lastName) {
         this.firstName = firstName;

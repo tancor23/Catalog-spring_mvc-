@@ -1,6 +1,5 @@
 package com.itrexgroup.vydrasergei.springmvcproject.dto;
 
-import com.itrexgroup.vydrasergei.springmvcproject.entity.UserEntity;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -36,6 +35,6 @@ public class BookDto {
         this.page = page;
     }
 
-    private List<UserEntity> userEntities;
+    private List<Long> userDtos;
 
 }

@@ -9,6 +9,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/main")
 public class MainController {
@@ -21,6 +23,7 @@ public class MainController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String prepareMainViewGetMethod(ModelMap model) {
+        List allUsers = userService.getAllUsers();
         model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("books", bookService.getAllBooks());
         return "main_page";

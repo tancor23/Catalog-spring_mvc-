@@ -43,7 +43,7 @@ public class BookController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookId, @RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
         long id = Long.parseLong(bookId);
-        BookDto bookDto = (BookDto) bookService.getBookByID(id);
+        BookDto bookDto = bookService.getBookByID(id);
         bookDto.setName(bookName);
         bookDto.setAuthor(authorName);
         int page;

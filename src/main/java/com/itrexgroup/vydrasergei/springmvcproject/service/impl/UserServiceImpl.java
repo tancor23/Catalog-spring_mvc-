@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-public class UserServiceImpl implements UserService<UserDto> {
+public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserDao userDAO;

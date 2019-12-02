@@ -3,6 +3,7 @@ package com.itrexgroup.vydrasergei.springmvcproject.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,12 +29,12 @@ public class BookEntity {
     @Column(name = "page")
     private int page;
 
-/*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinTable(name = "user_book",
-            joinColumns = { @JoinColumn(name = "book_id") },
-            inverseJoinColumns = { @JoinColumn(name = "user_id") })*/
-/*    @ManyToMany(mappedBy="books", fetch = FetchType.LAZY)
-    private List<User> users;*/
+    /*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+        @JoinTable(name = "user_book",
+                joinColumns = { @JoinColumn(name = "book_id") },
+                inverseJoinColumns = { @JoinColumn(name = "user_id") })*/
+    @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
+    private List<UserEntity> users;
 
     public BookEntity(String name, String author) {
         this.name = name;
