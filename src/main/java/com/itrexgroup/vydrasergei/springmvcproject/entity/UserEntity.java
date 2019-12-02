@@ -1,10 +1,10 @@
-package com.itrexgroup.vydrasergei.springmvcproject.domain.mysql;
+package com.itrexgroup.vydrasergei.springmvcproject.entity;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -14,9 +14,9 @@ import java.util.*;
 @ToString
 @Entity
 @Table(name = "users", schema = "catalog_mysql")
-public class User {
+public class UserEntity {
 
-    public User(String firstName, String lastName) {
+    public UserEntity(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }
@@ -45,7 +45,7 @@ public class User {
             inverseJoinColumns = { @JoinColumn(name = "book_id") })
     private List<Book> books;*/
 
-    public String getFullName(){
+    public String getFullName() {
         return firstName + " " + lastName;
     }
 }

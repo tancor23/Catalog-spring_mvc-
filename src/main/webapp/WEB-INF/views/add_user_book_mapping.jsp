@@ -25,8 +25,8 @@
             Select User(s):&nbsp;
             <label>
                 <select name="userSelect" required>
-                    <c:forEach items="${users}" var="user">
-                        <option value="${user.id}">${user.firstName} ${user.lastName}</option>
+                    <c:forEach items="${userEntities}" var="userEntity">
+                        <option value="${userEntity.id}">${userEntity.firstName} ${userEntity.lastName}</option>
                     </c:forEach>
                 </select>
             </label>
@@ -35,8 +35,8 @@
             Select Book(s):&nbsp;
             <label>
                 <select name="bookSelect" required>
-                    <c:forEach items="${books}" var="book">
-                        <option value="${book.id}">${book.name}</option>
+                    <c:forEach items="${bookEntities}" var="bookEntity">
+                        <option value="${bookEntity.id}">${bookEntity.name}</option>
                     </c:forEach>
                 </select>
             </label>

@@ -1,7 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.config;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.Book;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.User;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -64,7 +64,7 @@ public class AppConfig {
         props.put(C3P0_MAX_STATEMENTS, Objects.requireNonNull(env.getProperty(HIBERNATE_MAX_STATEMENTS)));
 
         factoryBean.setHibernateProperties(props);
-        factoryBean.setAnnotatedClasses(User.class, Book.class);
+        factoryBean.setAnnotatedClasses(UserEntity.class, BookEntity.class);
         return factoryBean;
     }
 

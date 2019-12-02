@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.User;
+import com.itrexgroup.vydrasergei.springmvcproject.dto.UserDto;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = "/user", produces="application/json;charset=UTF-8")
+@RequestMapping(value = "/user", produces = "application/json;charset=UTF-8")
 public class UserController {
 
     @Autowired
@@ -41,17 +41,17 @@ public class UserController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUserPostMethod(@RequestParam String userId, @RequestParam String firstName, @RequestParam String lastName) {
         long id = Long.parseLong(userId);
-        User user = userService.getUserByID(id);
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        userService.update(user);
+        UserDto userDto = (UserDto) userService.getUserByID(id);
+        userDto.setFirstName(firstName);
+        userDto.setLastName(lastName);
+        userService.update(userDto);
         return "redirect:/main/";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String firstName, @RequestParam String lastName) {
-        User user = new User(firstName, lastName);
-        userService.create(user);
+        UserDto userDto = new UserDto(firstName, lastName);
+        userService.create(userDto);
         return "redirect:/main/";
     }
 }

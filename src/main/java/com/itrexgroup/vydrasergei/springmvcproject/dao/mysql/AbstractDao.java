@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 
-public abstract class AbstractDAO {
+public abstract class AbstractDao {
 
     @Autowired
     private SessionFactory sessionFactory;

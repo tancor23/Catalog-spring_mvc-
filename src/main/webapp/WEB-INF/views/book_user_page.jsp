@@ -13,7 +13,7 @@
 
 <div id="container">
     <div class="bookUserForm">
-        <h1>The book '${bookName}' is has: </h1>
+        <h1>The bookEntity '${bookName}' is has: </h1>
         <c:choose>
             <c:when test="${bookUserSize=='0'}">
                 <h1>No one</h1>
@@ -21,7 +21,7 @@
             </c:when>
             <c:otherwise>
                 <c:forEach items="${bookUsers}" var="bookUserName">
-                    <h1> - '${bookUserName}' user</h1>
+                    <h1> - '${bookUserName}' userEntity</h1>
                 </c:forEach>
                 <br />
             </c:otherwise>

@@ -1,19 +1,17 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.User;
-
 import java.util.List;
 
-public interface UserService {
+public interface UserService<T> {
 
-    void create(User user);
+    T create(T user);
 
-    List<User> getAllUsers();
+    List<T> getAllUsers();
 
-    User getUserByID(Long id);
+    T getUserByID(Long id);
 
-    void delete(User user);
+    void delete(T user);
 
-    void update(User user);
+    void update(T user);
 
 }

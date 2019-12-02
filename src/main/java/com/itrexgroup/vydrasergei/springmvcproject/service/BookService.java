@@ -1,18 +1,18 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 
 import java.util.List;
 
-public interface BookService {
+public interface BookService<T> {
 
-    void create(Book book);
+    T create(T bookEntity);
 
-    List<Book> getAllBooks();
+    List<T> getAllBooks();
 
-    Book getBookByID(Long id);
+    T getBookByID(Long id);
 
-    void delete(Book book);
+    void delete(T bookEntity);
 
-    void update(Book book);
+    void update(T bookEntity);
 }

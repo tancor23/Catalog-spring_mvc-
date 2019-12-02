@@ -1,7 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.Book;
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.User;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.UserEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,8 +31,8 @@ public class UserBookController {
         return "user_book_page";
     }
 
-    private List<String> getNameOfBooks(List<Book> books) {
-        return books.stream().map(Book::getName).collect(Collectors.toList());
+    private List<String> getNameOfBooks(List<BookEntity> bookEntities) {
+        return bookEntities.stream().map(BookEntity::getName).collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/book_info", method = RequestMethod.POST)
@@ -41,8 +41,8 @@ public class UserBookController {
         return "book_user_page";
     }
 
-    private List<String> getFullNameOfUser(List<User> users) {
-        return users.stream().map(User::getFullName).collect(Collectors.toList());
+    private List<String> getFullNameOfUser(List<UserEntity> userEntities) {
+        return userEntities.stream().map(UserEntity::getFullName).collect(Collectors.toList());
     }
 
     @RequestMapping(value = "/add_mapping", method = RequestMethod.GET)

@@ -1,6 +1,6 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
-import com.itrexgroup.vydrasergei.springmvcproject.domain.mysql.Book;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,17 +42,17 @@ public class BookController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookId, @RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
         long id = Long.parseLong(bookId);
-        Book book = bookService.getBookByID(id);
-        book.setName(bookName);
-        book.setAuthor(authorName);
+        BookEntity bookEntity = bookService.getBookByID(id);
+        bookEntity.setName(bookName);
+        bookEntity.setAuthor(authorName);
         int page;
         try {
             page = Integer.parseInt(countOfPage);
         } catch (NumberFormatException e) {
             page = 1;
         }
-        book.setPage(page);
-        bookService.update(book);
+        bookEntity.setPage(page);
+        bookService.update(bookEntity);
         return "redirect:/main/";
     }
 
@@ -64,8 +64,8 @@ public class BookController {
         }catch (NumberFormatException e){
             page = 1;
         }
-        Book book = new Book(bookName, authorName, page);
-        bookService.create(book);
+        BookEntity bookEntity = new BookEntity(bookName, authorName, page);
+        bookService.create(bookEntity);
         return "redirect:/main/";
     }
 }

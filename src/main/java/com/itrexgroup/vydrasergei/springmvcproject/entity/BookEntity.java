@@ -1,9 +1,8 @@
-package com.itrexgroup.vydrasergei.springmvcproject.domain.mysql;
+package com.itrexgroup.vydrasergei.springmvcproject.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter
@@ -13,7 +12,7 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "books", schema = "catalog_mysql")
-public class Book {
+public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,12 +35,12 @@ public class Book {
 /*    @ManyToMany(mappedBy="books", fetch = FetchType.LAZY)
     private List<User> users;*/
 
-    public Book(String name, String author) {
+    public BookEntity(String name, String author) {
         this.name = name;
         this.author = author;
     }
 
-    public Book(String name, String author, int page) {
+    public BookEntity(String name, String author, int page) {
         this.name = name;
         this.author = author;
         this.page = page;

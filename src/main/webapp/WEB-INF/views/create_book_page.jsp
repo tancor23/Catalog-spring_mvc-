@@ -11,7 +11,7 @@
 
 <div id="container">
     <div class="createBookForm">
-        <form method="post" action="${pageContext.request.contextPath}/book/create">
+        <form method="post" action="${pageContext.request.contextPath}/bookEntity/create">
             Name of Book: <label><input type="text" name="bookName" required/></label><br>
             Name of Author: <label><input type="text" name="authorName" required/></label><br>
             Count of Page: <label><input type="text" name="countOfPage" required/></label><br>
