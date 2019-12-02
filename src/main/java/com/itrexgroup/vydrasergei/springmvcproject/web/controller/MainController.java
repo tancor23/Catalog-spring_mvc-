@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping("/main")
 public class MainController {
 
-    //private static final ModelMapper modelMapper = new ModelMapper();
-
     @Autowired
     private BookService bookService;
 
@@ -23,8 +21,6 @@ public class MainController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String prepareMainViewGetMethod(ModelMap model) {
-        //modelMapper.map()
-
         model.addAttribute("users", userService.getAllUsers());
         model.addAttribute("books", bookService.getAllBooks());
         return "main_page";

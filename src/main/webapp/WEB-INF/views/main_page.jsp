@@ -26,35 +26,35 @@
                 <th>Was created at</th>
                 <th colspan="3">Actions</th>
             </tr>
-            <c:forEach items="${userEntities}" var="userEntity">
+            <c:forEach items="${users}" var="user">
                 <tr>
-                    <td class="first_name">${userEntity.firstName}</td>
-                    <td class="last_name">${userEntity.lastName}</td>
-                    <td class="created_at">${userEntity.createdAt}</td>
+                    <td class="first_name">${user.firstName}</td>
+                    <td class="last_name">${user.lastName}</td>
+                    <td class="created_at">${user.createdAt}</td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/userEntity/delete">
-                            <input type="hidden" name="userId" value="${userEntity.id}"/>
+                        <form method="post" action="${pageContext.request.contextPath}/user/delete">
+                            <input type="hidden" name="userId" value="${user.id}"/>
                             <input type="submit" name="delete" value="Delete"/>
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/userEntity/update_page">
-                            <input type="hidden" name="userId" value="${userEntity.id}"/>
-                            <input type="hidden" name="firstName" value="${userEntity.firstName}"/>
-                            <input type="hidden" name="lastName" value="${userEntity.lastName}"/>
+                        <form method="post" action="${pageContext.request.contextPath}/user/update_page">
+                            <input type="hidden" name="userId" value="${user.id}"/>
+                            <input type="hidden" name="firstName" value="${user.firstName}"/>
+                            <input type="hidden" name="lastName" value="${user.lastName}"/>
                             <input type="submit" name="update" value="Update"/>
                         </form>
                     </td>
                     <td>
                         <form method="post" action="${pageContext.request.contextPath}/user_book/user_info">
-                            <input type="hidden" name="userId" value="${userEntity.id}"/>
+                            <input type="hidden" name="userId" value="${user.id}"/>
                             <input type="submit" name="bookEntities" value="Books"/>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        <form method="get" action="${pageContext.request.contextPath}/userEntity/">
+        <form method="get" action="${pageContext.request.contextPath}/user/">
             <input type="submit" name="createUser" value="Create New User"/>
         </form>
     </div>
@@ -68,36 +68,36 @@
                 <th>Count of Page</th>
                 <th colspan="3">Actions</th>
             </tr>
-            <c:forEach items="${bookEntities}" var="bookEntity">
+            <c:forEach items="${books}" var="book">
                 <tr>
-                    <td class="book_name">${bookEntity.name}</td>
-                    <td class="author_name">${bookEntity.author}</td>
-                    <td class="count_of_page">${bookEntity.page}</td>
+                    <td class="book_name">${book.name}</td>
+                    <td class="author_name">${book.author}</td>
+                    <td class="count_of_page">${book.page}</td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/bookEntity/delete">
-                            <input type="hidden" name="bookId" value="${bookEntity.id}"/>
+                        <form method="post" action="${pageContext.request.contextPath}/book/delete">
+                            <input type="hidden" name="bookId" value="${book.id}"/>
                             <input type="submit" name="delete" value="Delete"/>
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/bookEntity/update_page">
-                            <input type="hidden" name="bookId" value="${bookEntity.id}"/>
-                            <input type="hidden" name="bookName" value="${bookEntity.name}"/>
-                            <input type="hidden" name="authorName" value="${bookEntity.author}"/>
-                            <input type="hidden" name="countOfPage" value="${bookEntity.page}"/>
+                        <form method="post" action="${pageContext.request.contextPath}/book/update_page">
+                            <input type="hidden" name="bookId" value="${book.id}"/>
+                            <input type="hidden" name="bookName" value="${book.name}"/>
+                            <input type="hidden" name="authorName" value="${book.author}"/>
+                            <input type="hidden" name="countOfPage" value="${book.page}"/>
                             <input type="submit" name="update" value="Update"/>
                         </form>
                     </td>
                     <td>
                         <form method="post" action="${pageContext.request.contextPath}/user_book/book_info">
-                            <input type="hidden" name="bookId" value="${bookEntity.id}"/>
+                            <input type="hidden" name="bookId" value="${book.id}"/>
                             <input type="submit" name="userEntities" value="Users"/>
                         </form>
                     </td>
                 </tr>
             </c:forEach>
         </table>
-        <form method="get" action="${pageContext.request.contextPath}/bookEntity/">
+        <form method="get" action="${pageContext.request.contextPath}/book/">
             <input type="submit" name="createBook" value="Create New Book"/>
         </form>
     </div>

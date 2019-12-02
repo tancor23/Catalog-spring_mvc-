@@ -17,7 +17,7 @@ public class UserServiceImpl implements UserService<UserDto> {
     @Autowired
     private UserDao userDAO;
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public UserDto create(UserDto userDto) {
         UserEntity userEntity = ObjectMapperUtils.map(userDto, UserEntity.class);

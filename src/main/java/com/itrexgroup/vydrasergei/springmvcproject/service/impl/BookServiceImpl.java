@@ -17,7 +17,7 @@ public class BookServiceImpl implements BookService<BookDto> {
     @Autowired
     private BookDao bookDAO;
 
-    @Transactional(readOnly = true)
+    @Transactional
     @Override
     public BookDto create(BookDto bookDto) {
         BookEntity bookEntity = ObjectMapperUtils.map(bookDto, BookEntity.class);

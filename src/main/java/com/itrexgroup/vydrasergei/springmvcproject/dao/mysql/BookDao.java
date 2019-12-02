@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface BookDao {
 
-    boolean create(BookEntity bookEntity);
+    BookEntity create(BookEntity bookEntity);
 
     List<BookEntity> getAllBooks();
 

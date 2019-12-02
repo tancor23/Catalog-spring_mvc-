@@ -15,9 +15,9 @@ import java.util.List;
 public class BookDaoImpl extends AbstractDao implements BookDao {
 
     @Override
-    public boolean create(BookEntity bookEntity) {
+    public BookEntity create(BookEntity bookEntity) {
         getSession().save(bookEntity);
-        return true;
+        return bookEntity;
     }
 
     @Override

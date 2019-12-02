@@ -30,6 +30,12 @@ public class BookDto {
         this.author = author;
     }
 
+    public BookDto(@NotNull String name, @NotNull String author, int page) {
+        this.name = name;
+        this.author = author;
+        this.page = page;
+    }
+
     private List<UserEntity> userEntities;
 
 }
