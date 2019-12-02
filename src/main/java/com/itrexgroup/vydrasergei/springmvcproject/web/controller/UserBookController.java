@@ -2,11 +2,11 @@ package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dto.UserDto;
 import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
-import com.itrexgroup.vydrasergei.springmvcproject.entity.UserEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import com.itrexgroup.vydrasergei.springmvcproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Transactional
 @Controller
 @RequestMapping(value = "/user_book", produces = "application/json;charset=UTF-8")
 public class UserBookController {

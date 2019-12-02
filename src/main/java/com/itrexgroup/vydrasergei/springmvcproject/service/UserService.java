@@ -1,19 +1,19 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service;
 
-import com.itrexgroup.vydrasergei.springmvcproject.dto.UserDto;
+import com.itrexgroup.vydrasergei.springmvcproject.entity.UserEntity;
 
 import java.util.List;
 
 public interface UserService {
 
-    UserDto create(UserDto user);
+    UserEntity create(UserEntity user);
 
-    List<UserDto> getAllUsers();
+    List<UserEntity> getAllUserEntity();
 
-    UserDto getUserByID(Long id);
+    UserEntity getUserEntityByID(Long id);
 
-    void delete(UserDto user);
+    void delete(UserEntity userEntity);
 
-    void update(UserDto user);
+    void update(UserEntity userEntity);
 
 }

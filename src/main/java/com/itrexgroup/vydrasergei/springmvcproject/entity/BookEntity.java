@@ -29,10 +29,6 @@ public class BookEntity {
     @Column(name = "page")
     private int page;
 
-    /*    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-        @JoinTable(name = "user_book",
-                joinColumns = { @JoinColumn(name = "book_id") },
-                inverseJoinColumns = { @JoinColumn(name = "user_id") })*/
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
     private List<UserEntity> users;
 
@@ -45,6 +41,12 @@ public class BookEntity {
         this.name = name;
         this.author = author;
         this.page = page;
+    }
+
+    public BookEntity(Long id, String name, String author) {
+        this.id = id;
+        this.name = name;
+        this.author = author;
     }
 }
 

@@ -1,21 +1,26 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
-import com.itrexgroup.vydrasergei.springmvcproject.dto.BookDto;
 import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+@Transactional
 @Controller
 @RequestMapping(value = "/book")
 public class BookController {
 
+    private final BookService bookService;
+
     @Autowired
-    BookService bookService;
+    public BookController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String goToCreateBookPage() {
@@ -25,7 +30,7 @@ public class BookController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteBookPostMethod(@RequestParam String bookId) {
         long id = Long.parseLong(bookId);
-        bookService.delete(bookService.getBookByID(id));
+        bookService.delete(bookService.getBookEntityByID(id));
         return "redirect:/main/";
     }
 
@@ -43,17 +48,17 @@ public class BookController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookId, @RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
         long id = Long.parseLong(bookId);
-        BookDto bookDto = bookService.getBookByID(id);
-        bookDto.setName(bookName);
-        bookDto.setAuthor(authorName);
+        BookEntity bookEntity = bookService.getBookEntityByID(id);
+        bookEntity.setName(bookName);
+        bookEntity.setAuthor(authorName);
         int page;
         try {
             page = Integer.parseInt(countOfPage);
         } catch (NumberFormatException e) {
             page = 1;
         }
-        bookDto.setPage(page);
-        bookService.update(bookDto);
+        bookEntity.setPage(page);
+        bookService.update(bookEntity);
         return "redirect:/main/";
     }
 
@@ -62,11 +67,11 @@ public class BookController {
         int page;
         try {
             page = Integer.parseInt(countOfPage);
-        }catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             page = 1;
         }
-        BookDto bookDto = new BookDto(bookName, authorName, page);
-        bookService.create(bookDto);
+        BookEntity bookEntity = new BookEntity(bookName, authorName, page);
+        bookService.create(bookEntity);
         return "redirect:/main/";
     }
 }

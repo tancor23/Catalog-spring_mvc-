@@ -1,51 +1,46 @@
 package com.itrexgroup.vydrasergei.springmvcproject.service.impl;
 
 import com.itrexgroup.vydrasergei.springmvcproject.dao.mysql.BookDao;
-import com.itrexgroup.vydrasergei.springmvcproject.dto.BookDto;
-import com.itrexgroup.vydrasergei.springmvcproject.dto.ObjectMapperUtils;
 import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 public class BookServiceImpl implements BookService {
 
+    private final BookDao bookDAO;
+
     @Autowired
-    private BookDao bookDAO;
-
-    @Transactional
-    @Override
-    public BookDto create(BookDto bookDto) {
-        BookEntity bookEntity = ObjectMapperUtils.map(bookDto, BookEntity.class);
-        return ObjectMapperUtils.map(bookDAO.create(bookEntity), BookDto.class);
+    public BookServiceImpl(BookDao bookDAO) {
+        this.bookDAO = bookDAO;
     }
 
-    @Transactional(readOnly = true)
     @Override
-    public List<BookDto> getAllBooks() {
-        return ObjectMapperUtils.mapAll(bookDAO.getAllBooks(), BookDto.class);
+    public BookEntity create(BookEntity bookEntity) {
+        return bookDAO.create(bookEntity);
     }
 
-    @Transactional(readOnly = true)
     @Override
-    public BookDto getBookByID(Long id) {
-        return ObjectMapperUtils.map(bookDAO.getById(id), BookDto.class);
+    public List<BookEntity> getAllBookEntity() {
+        return bookDAO.getAllBooks();
     }
 
-    @Transactional
     @Override
-    public void delete(BookDto bookDto) {
-        bookDAO.delete(ObjectMapperUtils.map(bookDto, BookEntity.class));
+    public BookEntity getBookEntityByID(Long id) {
+        return bookDAO.getById(id);
     }
 
-    @Transactional
     @Override
-    public void update(BookDto bookDto) {
-        bookDAO.update(ObjectMapperUtils.map(bookDto, BookEntity.class));
+    public void delete(BookEntity bookEntity) {
+        bookDAO.delete(bookEntity);
+    }
+
+    @Override
+    public void update(BookEntity bookEntity) {
+        bookDAO.update(bookEntity);
     }
 
 }

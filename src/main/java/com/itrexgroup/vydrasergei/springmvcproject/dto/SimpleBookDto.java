@@ -4,15 +4,13 @@ import lombok.*;
 
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class BookDto {
-
+public class SimpleBookDto {
     @Id
     private long id;
 
@@ -22,19 +20,8 @@ public class BookDto {
     @NotNull
     private String author;
 
-    private int page;
-
-    private List<SimpleUserDto> simpleUserDtoList;
-
-    public BookDto(@NotNull String name, @NotNull String author) {
+    public SimpleBookDto(@NotNull String name, @NotNull String author) {
         this.name = name;
         this.author = author;
     }
-
-    public BookDto(@NotNull String name, @NotNull String author, int page) {
-        this.name = name;
-        this.author = author;
-        this.page = page;
-    }
-
 }
