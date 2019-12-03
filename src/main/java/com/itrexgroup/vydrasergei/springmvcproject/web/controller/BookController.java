@@ -1,5 +1,7 @@
 package com.itrexgroup.vydrasergei.springmvcproject.web.controller;
 
+import com.itrexgroup.vydrasergei.springmvcproject.dto.BookDto;
+import com.itrexgroup.vydrasergei.springmvcproject.dto.UserDto;
 import com.itrexgroup.vydrasergei.springmvcproject.entity.BookEntity;
 import com.itrexgroup.vydrasergei.springmvcproject.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,16 +49,17 @@ public class BookController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookId, @RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
-        long id = Long.parseLong(bookId);
-        BookEntity bookEntity = bookService.getBookEntityByID(id);
-        bookEntity.setName(bookName);
-        bookEntity.setAuthor(authorName);
+        //TODO Is it OK if I'm working with DAO without DTO object???
+        Long id = Long.parseLong(bookId);
         int page;
         try {
             page = Integer.parseInt(countOfPage);
         } catch (NumberFormatException e) {
             page = 1;
         }
+        BookEntity bookEntity = bookService.getBookEntityByID(id);
+        bookEntity.setName(bookName);
+        bookEntity.setAuthor(authorName);
         bookEntity.setPage(page);
         bookService.update(bookEntity);
         return "redirect:/main/";
@@ -64,6 +67,7 @@ public class BookController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String bookName, @RequestParam String authorName, @RequestParam String countOfPage) {
+        //TODO Is it OK if I'm working with DAO without DTO object???
         int page;
         try {
             page = Integer.parseInt(countOfPage);

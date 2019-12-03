@@ -46,6 +46,7 @@ public class UserController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUserPostMethod(@RequestParam String userId, @RequestParam String firstName, @RequestParam String lastName) {
+        //TODO Is it OK if I'm working with DAO without DTO object???
         long id = Long.parseLong(userId);
         UserEntity userEntity = userService.getUserEntityByID(id);
         userEntity.setFirstName(firstName);
@@ -56,6 +57,7 @@ public class UserController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String firstName, @RequestParam String lastName) {
+        //TODO Is it OK if I'm working with DAO without DTO object???
         UserEntity userEntity = new UserEntity(firstName, lastName);
         userService.create(userEntity);
         return "redirect:/main/";

@@ -13,15 +13,15 @@
 
 <div id="container">
     <div class="userBookForm">
-        <h1>User '${firstName} ${lastName}' has: </h1>
+        <h1>User '${userDto.firstName} ${userDto.lastName}' has: </h1>
         <c:choose>
-            <c:when test="${userBookNameSize=='0'}">
+            <c:when test="${userBookSize=='0'}">
                 <h1>No one bookEntity</h1>
                 <br />
             </c:when>
             <c:otherwise>
-                <c:forEach items="${userBookNames}" var="userBookName">
-                    <h1> - '${userBookName}' bookEntity</h1>
+                <c:forEach items="${userDto.simpleBookDtoList}" var="simpleBookDto">
+                    <h1> - '${simpleBookDto.name}' book, '${simpleBookDto.author}' author</h1>
                 </c:forEach>
                 <br />
             </c:otherwise>
