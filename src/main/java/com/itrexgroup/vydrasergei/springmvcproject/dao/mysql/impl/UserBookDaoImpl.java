@@ -33,5 +33,14 @@ public class UserBookDaoImpl extends AbstractDao implements UserBookDao {
     public void delete(UserBookEntity userBookEntity) {
         getSession().delete(userBookEntity);
     }
+
+    @Override
+    public boolean isExist(Long userId, Long bookId) {
+        Query query = getSession().createQuery("FROM UserBookEntity WHERE userBookPKEntity.userId=:userId and userBookPKEntity.bookId =:bookId");
+        query.setParameter("userId", userId);
+        query.setParameter("bookId", bookId);
+        List list = query.list();
+        return list.size() > 0;
+    }
 }
 

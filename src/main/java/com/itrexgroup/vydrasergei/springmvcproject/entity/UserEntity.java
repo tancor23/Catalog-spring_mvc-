@@ -14,6 +14,7 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
+@Builder
 @Table(name = "users", schema = "catalog_mysql")
 public class UserEntity {
 
@@ -51,10 +52,6 @@ public class UserEntity {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public String getFullName() {
-        return firstName + " " + lastName;
     }
 }
 

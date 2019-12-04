@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @EqualsAndHashCode
 @ToString
+@Builder
 @Embeddable
 public class UserBookPKEntity implements Serializable {
 

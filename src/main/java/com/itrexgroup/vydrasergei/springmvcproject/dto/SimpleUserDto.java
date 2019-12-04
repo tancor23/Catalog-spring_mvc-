@@ -2,7 +2,6 @@ package com.itrexgroup.vydrasergei.springmvcproject.dto;
 
 import lombok.*;
 
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
 @Getter
@@ -12,7 +11,6 @@ import javax.validation.constraints.NotNull;
 @ToString
 public class SimpleUserDto {
 
-    @Id
     private long id;
 
     @NotNull

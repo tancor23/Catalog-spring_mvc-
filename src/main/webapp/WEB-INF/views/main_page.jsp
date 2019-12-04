@@ -38,7 +38,7 @@
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/user/update_page">
+                        <form method="get" action="${pageContext.request.contextPath}/user/update">
                             <input type="hidden" name="userId" value="${user.id}"/>
                             <input type="hidden" name="firstName" value="${user.firstName}"/>
                             <input type="hidden" name="lastName" value="${user.lastName}"/>
@@ -54,7 +54,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <form method="get" action="${pageContext.request.contextPath}/user/">
+        <form method="get" action="${pageContext.request.contextPath}/user/create">
             <input type="submit" name="createUser" value="Create New User"/>
         </form>
     </div>
@@ -74,13 +74,13 @@
                     <td class="author_name">${book.author}</td>
                     <td class="count_of_page">${book.page}</td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/book/delete">
+                        <form method="post" action="${pageContext.request.contextPath}/books/delete">
                             <input type="hidden" name="bookId" value="${book.id}"/>
                             <input type="submit" name="delete" value="Delete"/>
                         </form>
                     </td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/book/update_page">
+                        <form method="get" action="${pageContext.request.contextPath}/book/update">
                             <input type="hidden" name="bookId" value="${book.id}"/>
                             <input type="hidden" name="bookName" value="${book.name}"/>
                             <input type="hidden" name="authorName" value="${book.author}"/>
@@ -97,7 +97,7 @@
                 </tr>
             </c:forEach>
         </table>
-        <form method="get" action="${pageContext.request.contextPath}/book/">
+        <form method="get" action="${pageContext.request.contextPath}/book/create">
             <input type="submit" name="createBook" value="Create New Book"/>
         </form>
     </div>

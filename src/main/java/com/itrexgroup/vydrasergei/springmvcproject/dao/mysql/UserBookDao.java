@@ -9,4 +9,6 @@ public interface UserBookDao {
     UserBookEntity findByIds(Long userId, Long bookId);
 
     void delete(UserBookEntity userBookEntity);
+
+    boolean isExist(Long userId, Long bookId);
 }

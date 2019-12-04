@@ -44,4 +44,9 @@ public class UserBookServiceImpl implements UserBookService {
         delete(userBookEntity);
     }
 
+    @Override
+    public boolean isExist(Long user_id, Long book_id) {
+        return userBookDao.isExist(user_id, book_id);
+    }
+
 }

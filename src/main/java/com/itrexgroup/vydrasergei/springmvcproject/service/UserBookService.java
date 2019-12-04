@@ -13,4 +13,6 @@ public interface UserBookService {
     void delete(UserBookEntity userBookEntity);
 
     void delete(Long user_id, Long book_id);
+
+    boolean isExist(Long user_id, Long book_id);
 }

@@ -2,6 +2,7 @@ package com.itrexgroup.vydrasergei.springmvcproject.mapper;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public interface AbstractMapper<D,T> {
 
@@ -9,7 +10,11 @@ public interface AbstractMapper<D,T> {
 
     T mapToEntity(final D dto);
 
-    List<D> mapAllToDto(final Collection<T> entityList);
+    default List<D> mapAllToDto(final Collection<T> entityList){
+        return entityList.stream().map(this::mapToDto).collect(Collectors.toList());
+    }
 
-    List<T> mapAllToEntity(final Collection<D> dtoList);
+    default List<T> mapAllToEntity(final Collection<D> dtoList){
+        return dtoList.stream().map(this::mapToEntity).collect(Collectors.toList());
+    }
 }

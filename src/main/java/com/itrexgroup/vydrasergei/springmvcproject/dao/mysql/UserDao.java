@@ -17,6 +17,4 @@ public interface UserDao {
     void persist(UserEntity entity);
 
     void delete(UserEntity entity);
-
-    //List<Book> mappedBooks();
 }

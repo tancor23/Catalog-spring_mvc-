@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-@Transactional
 @Controller
 @RequestMapping(value = "/user", produces = "application/json;charset=UTF-8")
 public class UserController {
@@ -22,11 +21,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String goToCreateUserPage() {
         return "create_user_page";
     }
 
+    @Transactional
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public String deleteUserPostMethod(@RequestParam String userId) {
         long id = Long.parseLong(userId);
@@ -34,7 +34,7 @@ public class UserController {
         return "redirect:/main/";
     }
 
-    @RequestMapping(value = "/update_page", method = RequestMethod.POST)
+    @RequestMapping(value = "/update", method = RequestMethod.GET)
     public ModelAndView updateUserPagePostMethod(@RequestParam String userId, @RequestParam String firstName, @RequestParam String lastName) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("update_user_page");
@@ -44,9 +44,9 @@ public class UserController {
         return modelAndView;
     }
 
+    @Transactional
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String updateUserPostMethod(@RequestParam String userId, @RequestParam String firstName, @RequestParam String lastName) {
-        //TODO Is it OK if I'm working with DAO without DTO object???
         long id = Long.parseLong(userId);
         UserEntity userEntity = userService.getUserEntityByID(id);
         userEntity.setFirstName(firstName);
@@ -55,9 +55,9 @@ public class UserController {
         return "redirect:/main/";
     }
 
+    @Transactional
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String updateBookPostMethod(@RequestParam String firstName, @RequestParam String lastName) {
-        //TODO Is it OK if I'm working with DAO without DTO object???
         UserEntity userEntity = new UserEntity(firstName, lastName);
         userService.create(userEntity);
         return "redirect:/main/";

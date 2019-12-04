@@ -15,6 +15,7 @@ import java.io.Serializable;
 @EqualsAndHashCode
 @ToString
 @Entity
+@Builder
 @Table(name = "user_book", schema = "catalog_mysql")
 public class UserBookEntity {
 

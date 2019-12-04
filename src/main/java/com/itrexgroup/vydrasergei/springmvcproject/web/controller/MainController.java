@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-@Transactional(readOnly = true)
 @Controller
 @RequestMapping("/main")
 public class MainController {
@@ -32,6 +31,7 @@ public class MainController {
         this.userService = userService;
     }
 
+    @Transactional(readOnly = true)
     @RequestMapping(method = RequestMethod.GET)
     public String prepareMainViewGetMethod(ModelMap model) {
         AbstractMapper<UserDto, UserEntity> userMapper = new UserMapper();

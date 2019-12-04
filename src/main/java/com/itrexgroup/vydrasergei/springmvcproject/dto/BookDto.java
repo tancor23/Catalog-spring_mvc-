@@ -2,7 +2,6 @@ package com.itrexgroup.vydrasergei.springmvcproject.dto;
 
 import lombok.*;
 
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -11,9 +10,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class BookDto {
 
-    @Id
     private long id;
 
     @NotNull

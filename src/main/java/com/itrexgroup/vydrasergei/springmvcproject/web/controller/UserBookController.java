@@ -82,13 +82,11 @@ public class UserBookController {
         ModelAndView model = new ModelAndView();
         long userId = Long.parseLong(userSelect);
         long bookId = Long.parseLong(bookSelect);
-        UserBookEntity userBookEntity = userBookService.getByIDs(userId, bookId);
-        try {
+        if (userBookService.isExist(userId, bookId)){
+            model.addObject("dbAlert","This associating is in DB!");
+        }else {
             userBookService.create(userId, bookId);
             model.addObject("dbAlert","The associating was added successfully");
-        }catch (NonUniqueObjectException e){
-            e.getMessage();
-            model.addObject("dbAlert","This associating is in DB!");
         }
         return goToAddMappingGetMethod(model);
     }
